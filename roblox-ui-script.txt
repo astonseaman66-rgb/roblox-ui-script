@@ -1,0 +1,41 @@
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Create Button
+local toggleButton = Instance.new("TextButton")
+toggleButton.Size = UDim2.new(0, 150, 0, 50)
+toggleButton.Position = UDim2.new(0, 20, 0, 20)
+toggleButton.Text = "Open Menu"
+toggleButton.Parent = screenGui
+
+-- Create Frame (Menu)
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 300, 0, 200)
+frame.Position = UDim2.new(0.5, -150, 0.5, -100)
+frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.Visible = false
+frame.Parent = screenGui
+
+-- Add Text Label inside Frame
+local label = Instance.new("TextLabel")
+label.Size = UDim2.new(1, 0, 0, 50)
+label.Text = "My UI Menu"
+label.TextScaled = true
+label.BackgroundTransparency = 1
+label.TextColor3 = Color3.new(1, 1, 1)
+label.Parent = frame
+
+-- Toggle Function
+local isOpen = false
+
+toggleButton.MouseButton1Click:Connect(function()
+	isOpen = not isOpen
+	frame.Visible = isOpen
+	
+	if isOpen then
+		toggleButton.Text = "Close Menu"
+	else
+		toggleButton.Text = "Open Menu"
+	end
+end)
